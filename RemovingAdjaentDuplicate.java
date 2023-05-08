@@ -45,6 +45,9 @@ public class RemovingAdjaentDuplicate {
 	        // printing array elements
 	        for (int i = 0; i < k; i++)
 	            System.out.print(a[i] + " ");
+	        //here we are just printing the elements for the length of k only,
+	        //if you print it to the length of original array, then remaining will be
+	        //printed as present in the original array.
 		    
 	}
 }
