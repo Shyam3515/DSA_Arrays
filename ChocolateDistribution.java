@@ -24,11 +24,11 @@ package arrays;
 public class ChocolateDistribution {
 
 	public static void main(String[] args) {
-		int[] arr= {1,0,2};
+		int[] arr= {1,2,1,4,9,1,6,8,3,0};
 		int n=arr.length;
 		int ans=0;
-		int[] right = new int[n]; //33344455
-		int[] left = new int[n]; //55555552
+		int[] right = new int[n]; 
+		int[] left = new int[n]; 
 		
 		for(int i=1;i<n;i++){
 			left[0]=1;
