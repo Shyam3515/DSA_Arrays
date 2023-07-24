@@ -48,17 +48,18 @@
 package arrays;
 import java.util.HashMap;
 public class SubArrayWithGivenSum {
-	void m1() {
+	void m1(int sum) {
 		// Works for only Positive Numbers, Time Complexity:O(n)/Space Complexity:O(1)
 		int cursum=0,start=0;
-	    int sum=6,flag=0;
+	    int flag=0;
 		System.out.println("Method 1:");
-		int arr[] = {2,4,7,6,5,3,9,1,2,3,5,0};
+		int arr[] = {2,4,7,6,5,3,9,1,2,3,5,1};
 		int n = arr.length;
 		for (int i = 0; i<n;i++) 
         {
 			cursum+=arr[i];
 			System.out.println("I: "+i);
+			//this loop iterates until cursum becomes less than equals sum
 			while(cursum>sum && start<n) 
         	{
 				System.out.println("CurSum Before subtraction:"+cursum);
@@ -92,37 +93,36 @@ public class SubArrayWithGivenSum {
         	if(cursum-sum==0) {
         		start=0;
         		end=i;
-        		break;
+        		System.out.println("The Sub Array is present in Index: "+"("+start+","+end+")");
+//        		break;
         	}
         	
         	if(map.containsKey(cursum-sum)) {  //cursum = (cursum-sum) + sum
         		//our sum index starts from the next index of (cursum-sum), that's why adding 1.
         		start=map.get(cursum-sum)+1;
         		end=i;
-        		break;
+//        		break;
+        		System.out.println("The Sub Array is present in Index: "+"("+start+","+end+")");
         	}
         	// After adding values into cursum checking whether sum present or not
         	map.put(cursum,i); //else adding cursum to Hash-map,And again comparing from there
-        	System.out.println("map:"+map);
-        }                      
+//        	System.out.println("map:"+map);
+        };
         
         if(end==-1) {
         	System.out.println("SubArray Not Found");
         }
-        else {
-        	System.out.println("The Sub Array is present in Index: "+"("+start+","+end+")");
-        }
+        
     }
 	public static void main(String[] args) {
 	// TODO Auto-generated method stub
 	    int sum=12;
 		System.out.println("*****SubArray With given Sum*****");
-		int arr[] = {2,4,-7,-6,5,3,4,-9,1,-2,3,5,0,12};
+		int arr[] = {2,4,6,-7,-6,5,3,4,-9,1,-2,3,5,4,1,11};
 		int n = arr.length;
 		SubArrayWithGivenSum sub= new SubArrayWithGivenSum();
-		sub.m1();
+		sub.m1(sum);
 		sub.m2(arr, sum, n);
-		
 		
 	}
 }
